@@ -16,10 +16,12 @@ The following list is a list of parameters with the following enumerators listed
 - **interval**: the interval of thr query. The acceptable values are _daily_, _weekly_ and _monthly_. The script
 validates the string, or the character passed as input. Values such _daily_, _DAILY_, _d_, _D_, _days_, ... are all accepted;
 - **event**: there are three different events for which you can return data from:
+
   1. Price History (in this context simply "history")
   2. Split
   3. Dividend
-The logic according to which the script works is the same as the last parameter: **case-insensitive** and similar words;
+
+  The logic according to which the script works is the same as the last parameter: **case-insensitive** and similar words;
 - **adj_close**: default parameter is `True`. However, you can pass the boolean `False` if you do not like to get
 Adjusted Prices.
   
