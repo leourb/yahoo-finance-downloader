@@ -97,7 +97,6 @@ class YahooFinanceDownloader:
         )
         adj_close = self.__datashelf.get_url_data().get("adj_close").format(str(self.__adj_close).lower())
         url = root + "&".join([period1, period2, interval, events, adj_close])
-        print(url)
         return url
 
     def __download_file(self):
