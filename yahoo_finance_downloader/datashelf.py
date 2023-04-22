@@ -66,5 +66,5 @@ class DataShelf:
             '_end_date': 'period2',
             '_interval': 'interval',
             '_events': 'events',
-            '_adj_close': 'includeAdjustedClose'
+            '_adj_close': 'includeAdjustedHistory'
         }.get(dict_key)
