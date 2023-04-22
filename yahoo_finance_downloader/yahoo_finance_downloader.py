@@ -80,7 +80,7 @@ class YahooFinanceInputs(DataShelf):
         try:
             datetime.strptime(start_date_value, '%Y-%m-%d')
         except ValueError:
-            print('start_date needs to be of YYYY-MM-DD format.')
+            raise ValueError('start_date needs to be of YYYY-MM-DD format.')
         if datetime.strptime(start_date_value, '%Y-%m-%d').date() >= date.today():
             raise ValueError(f'start_date {start_date_value} cannot be greater or equal than today\'s date')
         self._start_date = int(datetime.strptime(start_date_value, '%Y-%m-%d').timestamp())
@@ -104,7 +104,7 @@ class YahooFinanceInputs(DataShelf):
         try:
             datetime.strptime(end_date_value, '%Y-%m-%d')
         except ValueError:
-            print('end_date needs to be of YYYY-MM-DD format.')
+            raise ValueError('end_date needs to be of YYYY-MM-DD format.')
         if (
                 datetime.strptime(end_date_value, '%Y-%m-%d').date()
                 <= datetime.fromtimestamp(self.start_date).date()
