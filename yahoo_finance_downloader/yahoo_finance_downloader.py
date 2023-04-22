@@ -55,7 +55,7 @@ class YahooFinanceInputs(DataShelf):
         :param str ticker_value: ticker string to be assigned to the variable
         :return: a valid instance variable with ticker_value as the value
         """
-        if type(ticker_value) != str:
+        if not isinstance(ticker_value, str):
             raise TypeError(f'Ticker needs to be string! {str(ticker_value)} is {type(ticker_value)}')
         if not ticker_value:
             raise ValueError('Ticker cannot be blank')
@@ -73,7 +73,7 @@ class YahooFinanceInputs(DataShelf):
         :param str start_date_value: string containing the desired start_date
         :return: a valid instance variable with start_date_value as the value
         """
-        if type(start_date_value) != str:
+        if not isinstance(start_date_value, str):
             raise TypeError(f'start_date needs to be string. You have passed {type(start_date_value)}')
         if not start_date_value:
             raise ValueError('start_date needs to be populated')
@@ -97,7 +97,7 @@ class YahooFinanceInputs(DataShelf):
         :param str end_date_value: string containing the desired end_date
         :return: a valid instance variable with end_date_value as the value
         """
-        if type(end_date_value) != str:
+        if not isinstance(end_date_value, str):
             raise TypeError(f'end_date needs to be string. You have passed {type(end_date_value)}')
         if not end_date_value:
             raise ValueError('end_date needs to be populated')
@@ -124,7 +124,7 @@ class YahooFinanceInputs(DataShelf):
         :param str interval_value: cadence of the data the user wants to return
         :return: a valid instance variable with interval_value as the value
         """
-        if type(interval_value) != str or None:
+        if interval_value and not isinstance(interval_value, str):
             raise TypeError(
                 f'interval_value needs to be string or None as it is not a mandatory parameter. '
                 f'You have passed {type(interval_value)}'
@@ -147,7 +147,7 @@ class YahooFinanceInputs(DataShelf):
         :param str event_value: value of the series or the corporate events to pull
         :return: a valid instance variable with event_value as the value
         """
-        if type(event_value) != str or None:
+        if event_value and not isinstance(event_value, str):
             raise TypeError(
                 f'event_value needs to be string or None as it is not a mandatory parameter. '
                 f'You have passed {type(event_value)}'
@@ -170,7 +170,7 @@ class YahooFinanceInputs(DataShelf):
         :param bool adj_close_value: if True it will return the series adjusted by split and dividends
         :return: a valid instance variable with adj_close as the value
         """
-        if type(adj_close_value) != bool or None:
+        if adj_close_value and not isinstance(adj_close_value, bool):
             raise TypeError(
                 f'adj_close_value needs to be boolean or None as it is not a mandatory parameter. '
                 f'You have passed {type(adj_close_value)}'
