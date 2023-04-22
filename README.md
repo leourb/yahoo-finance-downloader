@@ -2,41 +2,67 @@
 
 ## Abstract
 
-The package takes data from [Yahoo! Finance](https://finance.yahoo.com) and returns it in a handy `pd.DataFrame`, in raw
-bytes or the source url used to download it.
-The user has flexibility in choosing the parameters he/she likes or use the default ones.
+The package takes data from [Yahoo! Finance](https://finance.yahoo.com) and it prints, converts to pandas or save it to
+file.
 
 ### Parameters
 
 The following list is a list of parameters with the following enumerators listed by parameters:
 
 - **ticker**: ticker of the instrument to retrieve data from. It must be a valid Yahoo! Finance ticker;
-- **start_date**: this accepts strings in the format _YYYY-MM-DD_, and it is <u>mandatory</u>;
-- **end_date**: this accepts strings in  the format _YYYY-MM-DD_, and it **not** mandatory. If left it blank, it will use today's date;
-- **interval**: the interval of thr query. The acceptable values are _daily_, _weekly_ and _monthly_. The script
-validates the string, or the character passed as input. Values such _daily_, _DAILY_, _d_, _D_, _days_, ... are all accepted;
+- **start_date**: this accepts strings in the format _YYYY-MM-DD_;
+- **end_date**: this accepts strings in  the format _YYYY-MM-DD_;
+- **interval**: the interval of thr query. The acceptable values are _1d_, _1w_ and _1mo_;
 - **event**: there are three different events for which you can return data from:
 
-  1. Price History (in this context simply "history")
-  2. Split
-  3. Dividend
+  1. _history_ for Price History
+  2. _div_ for Dividends
+  3. _split_ for Stock Splits
+  4. _capitalGain_ for Capital Gains
 
-  The logic according to which the script works is the same as the last parameter: **case-insensitive** and similar words;
 - **adj_close**: default parameter is `True`. However, you can pass the boolean `False` if you do not like to get
 Adjusted Prices.
   
 ### Sample Usage
 
+#### Display the data on screen
+
 ```python
 from yahoo_finance_downloader import YahooFinanceDownloader
 
-data = YahooFinanceDownloader(ticker="AAPL", start_date="2020-01-01", interval="DAYS", event="H")
-print(data.get_parsed_results())
+data = YahooFinanceDownloader(ticker='AAPL', start_date='2020-01-01', end_date='2023-04-10', events='div')
+data.display_file()
 ```
 
-This query will return the historical daily prices for Apple Inc. from the 1st January 2020 till today in a 
-`pd.DataFrame` format.
+This query will return the historical dividends for Apple Inc. from the January 1st 2020 till April 10th 2023, and it 
+will display the data on screen.
 
-## Comments or Feedback
+#### Return the results in a `pandas.DataFrame` object
 
-Please do not hesitate to contact me for suggestions or feedback! I'll be happy to hear from you.
+```python
+from yahoo_finance_downloader import YahooFinanceDownloader
+
+data = YahooFinanceDownloader(ticker='AAPL', start_date='2020-01-01', end_date='2023-04-10', events='div')
+data.to_pandas()
+```
+
+This query will return the historical dividends for Apple Inc. from the January 1st 2020 till April 10th 2023, and it 
+will return a `pandas.DataFrame` object. This will come handy as you can join or leverage all the built-in methods that
+Pandas offers.
+
+#### Write the results on a file
+
+```python
+from yahoo_finance_downloader import YahooFinanceDownloader
+
+data = YahooFinanceDownloader(ticker='AAPL', start_date='2020-01-01', end_date='2023-04-10', events='div')
+data.to_file(path='this/is/my/file/path', filename='my-file_test')
+```
+This query will return the historical dividends for Apple Inc. from the January 1st 2020 till April 10th 2023, and it 
+will write the results into `this/is/my/file/path` with filename `my-file_test.csv`. The function will check for you:
+
+1. The `path` is valid
+2. The `filename` is valid
+3. The `path` exists (and, if not, will create the dir for you)
+
+If no `filename` is passed, then the script will save the file in the default dir as `ticker_event.csv`
