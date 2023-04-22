@@ -2,8 +2,25 @@
 
 ## Abstract
 
-The package takes data from [Yahoo! Finance](https://finance.yahoo.com) and it prints, converts to pandas or save it to
+The package takes data from [Yahoo! Finance](https://finance.yahoo.com), and it prints, converts to pandas or save it to
 file.
+
+## Build the package
+
+Clone the repo into your desired location and then build the package into your terminal with:
+
+```shell
+python setup.py bdist_wheel
+```
+
+This will create the `dist` folder into the same location you have your `setup.py`.
+To install the wheel, you can just run
+
+```shell
+pip install dist/Yahoo_Finance_Downloader-1.0.0-py3-none-any.whl
+```
+
+## Usage
 
 ### Parameters
 
