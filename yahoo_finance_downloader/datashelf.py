@@ -2,7 +2,7 @@
 
 import urllib3
 
-from typing import Dict, List
+from typing import Dict, List, Union
 
 
 class DataShelf:
@@ -55,7 +55,7 @@ class DataShelf:
         return False
 
     @staticmethod
-    def return_parameter_mapping(dict_key: str) -> Dict[str, str] or None:
+    def return_parameter_mapping(dict_key: str) -> Union[Dict[str, str], None]:
         """
         Return the API parameter to be used for the request based on the human parameter passed
         :param str dict_key: human parameter to be translated

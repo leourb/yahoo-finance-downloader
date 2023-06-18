@@ -49,7 +49,7 @@ class YahooFinanceInputs(DataShelf):
         return self._ticker
 
     @ticker.setter
-    def ticker(self, ticker_value: str) -> None or TypeError or ValueError:
+    def ticker(self, ticker_value: str) -> None:
         """
         Set the value to ticker
         :param str ticker_value: ticker string to be assigned to the variable
@@ -67,7 +67,7 @@ class YahooFinanceInputs(DataShelf):
         return self._start_date
 
     @start_date.setter
-    def start_date(self, start_date_value: str) -> None or TypeError or ValueError:
+    def start_date(self, start_date_value: str) -> None:
         """
         Set the value to start_date_value
         :param str start_date_value: string containing the desired start_date
@@ -91,7 +91,7 @@ class YahooFinanceInputs(DataShelf):
         return self._end_date
 
     @end_date.setter
-    def end_date(self, end_date_value: str) -> None or TypeError or ValueError:
+    def end_date(self, end_date_value: str) -> None:
         """
         Set the value to end_date_value
         :param str end_date_value: string containing the desired end_date
@@ -118,7 +118,7 @@ class YahooFinanceInputs(DataShelf):
         return self._interval
 
     @interval.setter
-    def interval(self, interval_value: str) -> None or TypeError or ValueError:
+    def interval(self, interval_value: str) -> None:
         """
         Set the value to interval
         :param str interval_value: cadence of the data the user wants to return
@@ -141,7 +141,7 @@ class YahooFinanceInputs(DataShelf):
         return self._events
 
     @events.setter
-    def events(self, event_value: str) -> None or TypeError or ValueError:
+    def events(self, event_value: str) -> None:
         """
         Set the value to events
         :param str event_value: value of the series or the corporate events to pull
@@ -164,7 +164,7 @@ class YahooFinanceInputs(DataShelf):
         return self._adj_close
 
     @adj_close.setter
-    def adj_close(self, adj_close_value: bool) -> None or TypeError or ValueError:
+    def adj_close(self, adj_close_value: bool) -> None:
         """
         Set the value to adj_close
         :param bool adj_close_value: if True it will return the series adjusted by split and dividends
@@ -214,7 +214,7 @@ class YahooFinanceDownloader(YahooFinanceInputs):
             if self.return_parameter_mapping(human_param_key)
         }
 
-    def _process_request(self) -> BytesIO or ConnectionError:
+    def _process_request(self) -> BytesIO:
         """Process the request querying the data from Yahoo! Finance"""
         http = urllib3.PoolManager()
         with http.request(
