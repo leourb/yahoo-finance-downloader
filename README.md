@@ -16,8 +16,13 @@ python setup.py bdist_wheel
 This will create the `dist` folder into the same location you have your `setup.py`.
 To install the wheel, you can just run
 
+## Download the whl
+
+Alternatively, you can use the pre-built whl package under the `dist` folder in the repo and install it as shown below
+
 ```shell
-pip install dist/Yahoo_Finance_Downloader-1.0.0-py3-none-any.whl
+cd dist
+pip install Yahoo_Finance_Downloader-1.0.0-py3-none-any.whl
 ```
 
 ## Usage
